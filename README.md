@@ -1,5 +1,7 @@
 # link-visitor
 
+Let me help you open the links!
+
 ![link-visitor-demo](https://user-images.githubusercontent.com/47070852/177006635-ed9ff276-8f3d-4c42-9f94-2f6356e34eb2.gif)
 
 ## Installation
