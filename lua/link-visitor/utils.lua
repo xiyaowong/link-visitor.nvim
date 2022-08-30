@@ -54,7 +54,7 @@ local function confirm(msg)
 		row = math.floor((vim.o.lines - height) / 2) - 4,
 		col = math.floor((vim.o.columns - width) / 2),
 		style = "minimal",
-    zindex = 500,
+		zindex = 500,
 	})
 	vim.wo[winnr].winblend = 0
 
@@ -77,7 +77,7 @@ local function confirm(msg)
 		height = bg_height,
 		row = math.floor((vim.o.lines - bg_height) / 2) - 4,
 		col = math.floor((vim.o.columns - bg_width) / 2),
-    zindex = 450,
+		zindex = 450,
 	})
 	vim.wo[bg_winnr].winblend = 0
 
