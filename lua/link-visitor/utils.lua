@@ -35,6 +35,11 @@ function M.find_links(lines)
 end
 
 local function confirm(msg)
+  -- skip confirmation step
+  if config.skip_confirmation then
+    return true
+  end
+
 	vim.cmd([[echon '']])
 	local lines, hls = { msg .. " (y/n)" }, { "MoreMsg" }
 

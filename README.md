@@ -21,6 +21,7 @@ require("link-visitor").setup({
   linux: xdg-open
   ]]
 	silent = true, -- disable all prints, `false` by default
+  skip_confirmation = false, -- Skip the confirmation step, default: false
 })
 ```
 
