@@ -14,7 +14,7 @@ end
 local config = {
 	open_cmd = open_cmd,
 	silent = false,
-  skip_confirmation = false,
+	skip_confirmation = false,
 }
 
 function M.set(opts)
