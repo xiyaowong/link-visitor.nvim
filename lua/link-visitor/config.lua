@@ -15,6 +15,7 @@ local config = {
 	open_cmd = open_cmd,
 	silent = false,
 	skip_confirmation = false,
+	border = "rounded"
 }
 
 function M.set(opts)

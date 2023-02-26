@@ -41,7 +41,7 @@ local function confirm(msg)
 	end
 
 	vim.cmd([[echon '']])
-	local lines, hls = { msg .. " (y/n)" }, { "MoreMsg" }
+	local lines, hls = { msg .. " (y/n)" }, { "LinkVisitorText" }
 
 	-- information
 	local bufnr = api.nvim_create_buf(false, true)
@@ -52,6 +52,7 @@ local function confirm(msg)
 
 	api.nvim_buf_set_lines(bufnr, 0, -1, true, lines)
 
+	local border = config.border
 	local winnr = api.nvim_open_win(bufnr, false, {
 		relative = "editor",
 		width = width,
@@ -60,8 +61,14 @@ local function confirm(msg)
 		col = math.floor((vim.o.columns - width) / 2),
 		style = "minimal",
 		zindex = 500,
+		border = vim.tbl_contains({nil, false, "none"}, border) and "none" or border
 	})
+  local winhl = "NormalFloat:LinkVisitorFloat"
+  if fn.hlexists("FloatBorder") == 1 then
+    winhl = winhl .. ",FloatBorder:LinkVisitorBorder"
+  end
 	vim.wo[winnr].winblend = 0
+	vim.wo[winnr].winhl = winhl
 
 	local ns = api.nvim_create_namespace("getchar")
 	for idx, hl in ipairs(hls) do
