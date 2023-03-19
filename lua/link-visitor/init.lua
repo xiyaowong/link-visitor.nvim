@@ -69,7 +69,7 @@ function M.visit(url)
 	utils.visit({ link = url })
 end
 
-function setup_hl()
+local function setup_hl()
 	local hls = {
 		Float = "NormalFloat",
 		Border = "FloatBorder",
