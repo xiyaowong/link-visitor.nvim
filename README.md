@@ -21,8 +21,9 @@ require("link-visitor").setup({
     mac: open
     linux: xdg-open
   --]]
-  silent = true, -- disable all prints, `false` by defaultsskip_confirmation
+  silent = true, -- disable all prints, `false` by defaults skip_confirmation
   skip_confirmation = false, -- Skip the confirmation step, default: false
+  border = "rounded" -- none, single, double, rounded, solid, shadow see `:h nvim_open_win()`
 })
 ```
 
@@ -42,6 +43,11 @@ lv.visit(url) -- Open the url
 - `VisitLinkInBuffer` - Open links in the buffer
 - `VisitLinkUnderCursor` - Open link under the cursor
 - `VisitLinkNearCursor` - Open link near the cursor
+
+## Highlight Groups
+- `LinkVisitorFloat` - Background of popup. (default: links to `NormalFloat`)
+- `LinkVisitorBorder` - Border of popup. (default: links to `FloatBorder`)
+- `LinkVisitorText` - Text displayed in popup. (default: links to `MoreMsg`)
 
 ## Example
 

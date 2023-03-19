@@ -69,6 +69,17 @@ function M.visit(url)
 	utils.visit({ link = url })
 end
 
+function setup_hl()
+	local hls = {
+		Float = "NormalFloat",
+		Border = "FloatBorder",
+		Text = "MoreMsg",
+	}
+	for grp, link in pairs(hls) do
+		api.nvim_set_hl(0, "LinkVisitor" .. grp, { link = link, default = true })
+	end
+end
+
 function M.setup(opts)
 	config.set(opts)
 	api.nvim_create_user_command("VisitLinkInBuffer", function(args)
@@ -99,6 +110,8 @@ function M.setup(opts)
 	})
 	api.nvim_create_user_command("VisitLinkUnderCursor", M.link_under_cursor, {})
 	api.nvim_create_user_command("VisitLinkNearCursor", M.link_near_cursor, {})
+
+	setup_hl()
 end
 
 return M
