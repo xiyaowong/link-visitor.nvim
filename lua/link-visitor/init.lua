@@ -64,6 +64,30 @@ function M.link_near_cursor()
 	end
 end
 
+---Open the nearest link to the current position(Search in the whole buffer)
+function M.link_nearest()
+	local links = utils.find_links(api.nvim_buf_get_lines(0, 0, -1, false))
+	if vim.tbl_isempty(links) then
+		utils.echo("Link not found", "WarningMsg")
+		return
+	end
+
+	local cur_row = vim.fn.line(".")
+	local cur_col = vim.fn.col(".")
+
+	table.sort(
+		links,
+		---@param a Link
+		---@param b Link
+		function(a, b)
+			return math.pow(a.lnum - cur_row, 2) + math.pow(a.first - cur_col, 2)
+				< math.pow(b.lnum - cur_row, 2) + math.pow(b.first - cur_col, 2)
+		end
+	)
+
+	utils.visit(links[1])
+end
+
 ---@param url string
 function M.visit(url)
 	utils.visit({ link = url })
@@ -110,6 +134,7 @@ function M.setup(opts)
 	})
 	api.nvim_create_user_command("VisitLinkUnderCursor", M.link_under_cursor, {})
 	api.nvim_create_user_command("VisitLinkNearCursor", M.link_near_cursor, {})
+	api.nvim_create_user_command("VisitLinkNearest", M.link_nearest, {})
 
 	setup_hl()
 end

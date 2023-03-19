@@ -35,6 +35,7 @@ local lv = require 'link-visitor'
 lv.links_in_buffer(bufnr?) -- Open links in the buffer, current buffer by default
 lv.link_under_cursor() -- Open link under the cursor(search in current line)
 lv.link_near_cursor() -- Open link near the cursor(search in current line)
+lv.link_nearest() -- Open the nearest link to the current position(Search in the whole buffer)
 lv.visit(url) -- Open the url
 ```
 
@@ -43,8 +44,10 @@ lv.visit(url) -- Open the url
 - `VisitLinkInBuffer` - Open links in the buffer
 - `VisitLinkUnderCursor` - Open link under the cursor
 - `VisitLinkNearCursor` - Open link near the cursor
+- `VisitLinkNearest` - Open the nearest link to the current position
 
 ## Highlight Groups
+
 - `LinkVisitorFloat` - Background of popup. (default: links to `NormalFloat`)
 - `LinkVisitorBorder` - Border of popup. (default: links to `FloatBorder`)
 - `LinkVisitorText` - Text displayed in popup. (default: links to `MoreMsg`)
