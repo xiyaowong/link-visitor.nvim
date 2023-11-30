@@ -115,12 +115,16 @@ end
 ---@param link Link
 function M.visit(link)
   if confirm('Visit ' .. link.link .. ' ?') then
-    fn.jobstart(string.format('%s %s', config.open_cmd, link.link), {
-      on_stderr = function(_, data)
-        local msg = table.concat(data or {}, '\n')
-        if msg ~= '' then print(msg) end
-      end,
-    })
+    if type(config.open_cmd) == 'function' then
+      config.open_cmd(link.link)
+    else
+      fn.jobstart(string.format('%s %s', config.open_cmd, link.link), {
+        on_stderr = function(_, data)
+          local msg = table.concat(data or {}, '\n')
+          if msg ~= '' then print(msg) end
+        end,
+      })
+    end
   end
 end
 

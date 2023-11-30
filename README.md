@@ -15,11 +15,14 @@ Same as other normal plugins, use your favourite plugin manager to install.
 ```lua
 require("link-visitor").setup({
   open_cmd = nil,
-  --[[ cmd to open url
+  --[[
+  1. cmd to open url
     defaults:
-    win or wsl: cmd.exe /c start
-    mac: open
-    linux: xdg-open
+      win or wsl: cmd.exe /c start
+      mac: open
+      linux: xdg-open
+  2. a function to handle the link
+    the function signature: func(link: string)
   --]]
   silent = true, -- disable all prints, `false` by defaults skip_confirmation
   skip_confirmation = false, -- Skip the confirmation step, default: false
